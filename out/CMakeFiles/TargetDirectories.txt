@@ -1,3 +1,0 @@
-C:/Users/k34ub/source/skstu/browser-sdk-cpp-demo/out/CMakeFiles/browser-sdk-demo.dir
-C:/Users/k34ub/source/skstu/browser-sdk-cpp-demo/out/CMakeFiles/edit_cache.dir
-C:/Users/k34ub/source/skstu/browser-sdk-cpp-demo/out/CMakeFiles/rebuild_cache.dir

@@ -15,17 +15,19 @@ set(CMAKE_CONFIGURATION_TYPES
     "Debug;Release;"
     CACHE STRING "info" FORCE)
 
-project(browser-sdk-demo)
+project(sdk-demo-cpp)
 set(SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/main.cc
-    ${CMAKE_CURRENT_SOURCE_DIR}/main.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/sdk_wrapper.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/sdk_wrapper.cc
-				${CMAKE_CURRENT_SOURCE_DIR}/autotest.cc
-    ${CMAKE_CURRENT_SOURCE_DIR}/utils.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/utils.cc)
-if(WIN32)   
-list(APPEND SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/dlfcn-win32/src/dlfcn.c)
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/stdafx.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/stdafx.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/utils.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/utils.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/sdk_wrapper.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/sdk_wrapper.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/dlfcn-win32/src/dlfcn.c)
+if(WIN32)
+  list(APPEND SOURCES
+       ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/dlfcn-win32/src/dlfcn.c)
 endif()
 add_executable(${PROJECT_NAME} ${SOURCES})
 
@@ -62,7 +64,7 @@ if(WIN32)
             ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/node-addon-api)
 
   target_link_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-  #3rdparty/dlfcn-win32/src/
+  # 3rdparty/dlfcn-win32/src/
   target_link_libraries(
     ${PROJECT_NAME}
     PRIVATE version.lib
@@ -70,11 +72,8 @@ if(WIN32)
 elseif(APPLE)
   target_include_directories(
     ${PROJECT_NAME}
-    PRIVATE ${xsROOT_DIR}
-            ${xsINCLUDE_DIR}
-            ${xs3RDPARTY_DIR}/utfcpp/source/
-            ${xs3RDPARTY_DIR}/cpp-httplib/
-            ${xsVCPKG_INCLUDE_DIR})
+    PRIVATE ${xsROOT_DIR} ${xsINCLUDE_DIR} ${xs3RDPARTY_DIR}/utfcpp/source/
+            ${xs3RDPARTY_DIR}/cpp-httplib/ ${xsVCPKG_INCLUDE_DIR})
 
   set(_demo_link_dirs)
   if(EXISTS "${xsLIBS_DIR}")
