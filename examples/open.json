@@ -1,0 +1,9 @@
+{
+  "envs": [
+    {
+      "envId": "REPLACE_WITH_ENV_ID",
+      "urls": ["https://example.com"],
+      "args": ["--no-first-run", "--no-default-browser-check"]
+    }
+  ]
+}

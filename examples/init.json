@@ -1,0 +1,6 @@
+{
+  "userSig": "REPLACE_WITH_YOUR_USER_SIG",
+  "workDir": "C:/BroSDK-Demo",
+  "port": 9527,
+  "debug": true
+}

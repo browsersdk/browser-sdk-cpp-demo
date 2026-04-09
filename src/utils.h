@@ -1,4 +1,4 @@
-﻿#if !defined(__SDK_DEMO_UTILS_H__)
+#if !defined(__SDK_DEMO_UTILS_H__)
 #define __SDK_DEMO_UTILS_H__
 
 class Utils {
@@ -8,9 +8,9 @@ public:
 
 public:
   static std::string JsonToString(const rapidjson::Value &valObj);
+  static std::string PrettyJson(const std::string &json);
   static stl::path GetCurrentProcessDir();
-  static void MainProc(const std::function<void(const std::string &input,
-                                                bool &exit_flag)> &callback_);
+  static std::vector<std::string> SplitCommandLine(const std::string &input);
   template <typename T> static T GetRandomValue(const T &a, const T &b) {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -32,6 +32,9 @@ public:
                                                 std::ios::binary);
   static bool RemoveDir(const stl::path &dir);
   static stl::path GetAppDataDir();
+  static bool StringToBool(const std::string &input, bool *value);
+  static bool TryParseInt(const std::string &input, int *value);
+  static std::string ToLowerCopy(std::string input);
 };
 
 #endif //__SDK_DEMO_UTILS_H__
